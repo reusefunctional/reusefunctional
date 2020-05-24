@@ -1,0 +1,25 @@
+rec map(f) = lambda (xs)
+    (if xs = nil
+    then nil
+    else f(head(xs)):map(f)(tail(xs))) ;;
+
+val comp(f, g) = lambda (x) f(g(x)) ;;
+
+rec filter(p) = lambda (xs)
+    (if xs = nil
+    then nil
+    else 
+        if (p(head(xs)))
+        then head(xs):filter(p)(tail(xs))
+        else filter(p)(tail(xs))) ;;
+
+val BK_mIsUpper(x) = isUpper(x);;
+val BK_mIsAlpha(x) = isAlpha(x);;
+val BK_mIsDigit(x) = isDigit(x);;
+val BK_not(x) = if x = true then false else true;;
+
+NEx (list('a', 'B', 'C', '1', '2')) => list('a', 'B') ;;
+NEx (list('a', 'B', 'C', '1')) => list('a', 'B') ;;
+PEx (list('a', 'B', 'C', '1', '2')) => list('a') ;;
+PEx (list('a', 'B', 'C', '1', 'b', 'c')) => list('a', 'b', 'c') ;;
+Synthesize ([Char]) => [Char];;
